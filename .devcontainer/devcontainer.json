@@ -1,25 +1,25 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "OpenTelemetry",
+  "name": "OpenTelemetry",
 
   "dockerComposeFile": "./docker-compose.yml",
-	"service": "app",
+  "service": "app",
 
-	"workspaceFolder": "/workspace",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"GitHub.copilot",
-				"mhutchie.git-graph",
-				"ms-python.python"
-			],
-			"settings": {
-				"editor.detectIndentation": false,
-				"editor.insertSpaces": true,
-				"editor.tabSize": 2
-			}
-		}
-	},
-	"remoteUser": "root"
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "mhutchie.git-graph",
+        "ms-python.python"
+      ],
+      "settings": {
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+      }
+    }
+  },
+  "remoteUser": "root"
 }
