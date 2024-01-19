@@ -2,7 +2,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: http://app:4317
+        endpoint: collector:4317
 exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:

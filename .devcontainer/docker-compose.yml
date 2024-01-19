@@ -12,7 +12,7 @@ services:
     volumes:
       - ../:/workspace
     networks:
-      - otel-net
+      - otel-network
 
   collector:
     image: otel/opentelemetry-collector:latest
@@ -24,7 +24,7 @@ services:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     command: ["--config=/etc/otel-collector-config.yaml"]
     networks:
-      - otel-net
+      - otel-network
 
 networks:
-  otel-net:
+  otel-network:
