@@ -15,7 +15,7 @@ services:
       - otel-network
 
   collector:
-    image: otel/opentelemetry-collector:latest
+    image: otel/opentelemetry-collector-contrib:latest
     tty: true
     restart: always
     ports:
