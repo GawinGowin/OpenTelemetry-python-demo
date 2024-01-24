@@ -11,8 +11,6 @@ services:
       - 127.0.0.1:8081:8080
     volumes:
       - ../:/workspace
-    networks:
-      - otel-network
 
   collector:
     image: otel/opentelemetry-collector-contrib:latest
@@ -23,8 +21,19 @@ services:
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     command: ["--config=/etc/otel-collector-config.yaml"]
-    networks:
-      - otel-network
 
-networks:
-  otel-network:
+  jaeger:
+    image: "jaegertracing/all-in-one:latest"
+    ports:
+      - "16686:16686"
+      - "14268"
+      - "14250"
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
+      - COLLECTOR_OTLP_ENABLED=true
+
+  zipkin:
+    image: openzipkin/zipkin:latest
+    restart: always
+    ports:
+      - "9411:9411"
