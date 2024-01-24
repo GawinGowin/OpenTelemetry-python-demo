@@ -37,3 +37,17 @@ services:
     restart: always
     ports:
       - "9411:9411"
+
+  prometheus:
+    image: quay.io/prometheus/prometheus:v2.48.1
+    volumes:
+      - ./prometheus.yml:/etc/config/prometheus.yml
+    ports:
+      - "9090:9090"
+    command:
+        - --storage.tsdb.retention.time=15d
+        - --config.file=/etc/config/prometheus.yml
+        - --web.console.libraries=/etc/prometheus/console_libraries
+        - --web.console.templates=/etc/prometheus/consoles
+        - --enable-feature=exemplar-storage
+        - --enable-feature=otlp-write-receiver
