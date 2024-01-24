@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile.python
     tty: true
     restart: always
-    ports:
-      - 127.0.0.1:8081:8080
+    # ports:
+    #   - "127.0.0.1:8081:8080"
     volumes:
       - ../:/workspace
 
@@ -17,7 +17,7 @@ services:
     tty: true
     restart: always
     ports:
-      - 127.0.0.1:4317:4317
+      - "4317:4317"
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     command: ["--config=/etc/otel-collector-config.yaml"]
