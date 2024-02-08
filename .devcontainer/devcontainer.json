@@ -12,7 +12,8 @@
       "extensions": [
         "GitHub.copilot",
         "mhutchie.git-graph",
-        "ms-python.python"
+        "ms-python.python",
+        "zxh404.vscode-proto3"
       ],
       "settings": {
         "remote.autoForwardPortsFallback": 0,

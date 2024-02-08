@@ -31,7 +31,7 @@ FROM mcr.microsoft.com/devcontainers/python:1-3.12-bullseye as runtime
 WORKDIR /workspace/
 COPY --from=builder /reqs /usr/local
 COPY --from=grpc-builder /usr/src/app/ /proto
-
+RUN python -m pip install grpcio-tools==1.59.2
 RUN opentelemetry-bootstrap -a install
 
 ENV OTEL_SERVICE_NAME=recommendationservice
