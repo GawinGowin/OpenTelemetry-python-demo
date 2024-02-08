@@ -1,39 +1,16 @@
-from opentelemetry.sdk.resources import SERVICE_NAME, Resource
-
+# These are the necessary import declarations
 from opentelemetry import trace
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-
 from opentelemetry import metrics
-from opentelemetry.exporter.otlp.proto.http.metric_exporter import OTLPMetricExporter
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 from random import randint
 from flask import Flask, request
 import logging
 
-# Service name is required for most backends
-resource = Resource(attributes={
-    SERVICE_NAME: "rolldice"
-})
-
-traceProvider = TracerProvider(resource=resource)
-processor = BatchSpanProcessor(OTLPSpanExporter(endpoint="http://collector:4317"))
-traceProvider.add_span_processor(processor)
-trace.set_tracer_provider(traceProvider)
-
-reader = PeriodicExportingMetricReader(
-    OTLPMetricExporter(endpoint="http://collector:4317")
-)
-meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
-metrics.set_meter_provider(meterProvider)
-
 # Acquire a tracer
-tracer = trace.get_tracer_provider().get_tracer("rolldice")
+tracer = trace.get_tracer("diceroller.tracer")
 # Acquire a meter.
-meter = metrics.get_meter_provider().get_meter("rolldice")
+meter = metrics.get_meter("diceroller.meter")
+
 # Now create a counter instrument to make measurements with
 roll_counter = meter.create_counter(
     "dice.rolls",
