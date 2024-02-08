@@ -24,6 +24,8 @@ import helloworld_pb2_grpc
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
     def SayHello(self, request, context):
         return helloworld_pb2.HelloReply(message="Hello, %s!" % request.name)
+    def SayHelloAgain(self, request, context):
+        return helloworld_pb2.HelloReply(message=f"Hello again, {request.name}!")
 
 
 def serve():
@@ -34,7 +36,6 @@ def serve():
     server.start()
     print("Server started, listening on " + port)
     server.wait_for_termination()
-
 
 if __name__ == "__main__":
     logging.basicConfig()
