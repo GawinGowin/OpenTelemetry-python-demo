@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.python
+      target: runtime
     tty: true
     restart: always
     # ports:

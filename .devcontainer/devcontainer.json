@@ -5,7 +5,7 @@
 
   "dockerComposeFile": "./docker-compose.yml",
   "service": "app",
-
+  "postCreateCommand": "mv /proto/* /workspace/src/",
   "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
