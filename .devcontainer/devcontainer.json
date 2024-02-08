@@ -15,9 +15,11 @@
         "ms-python.python"
       ],
       "settings": {
+        "remote.autoForwardPortsFallback": 0,
         "editor.detectIndentation": false,
         "editor.insertSpaces": true,
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "github.copilot.chat.localeOverride": "en"
       }
     }
   },
